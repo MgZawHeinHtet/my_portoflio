@@ -1,75 +1,38 @@
-import React, { useState } from 'react'
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
-import { Link } from 'react-scroll'
-import { motion } from 'framer-motion'
-import ownLogo from "../assets/ownLogo.png"
-import generateLogo from "../assets/generateLogo.png"
+import { useState } from 'react'
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 
-const Navbar = () => {
-    const [nav, setNav] = useState(false)
+const links = [
+  { label: 'About', href: '#skills' },
+  { label: 'Work', href: '#portfolio' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
+]
 
-    const toggleNav = () => {
-        setNav(!nav)
-    }
-
-    const closeNav = () => {
-        setNav(false)
-    }
-
-    const menuVariants = {
-        open: {
-            x: 0,
-            transition: {
-            stiffness: 20,
-            damping: 15
-            }
-        },
-        closed: {
-            x: '-100%',
-            transition: {
-            stiffness: 20,
-            damping: 15
-            }
-        }
-    }
+export default function Navbar() {
+  const [open, setOpen] = useState(false)
 
   return (
-    <div className='fixed top-0 left-0 w-full bg-opacity-70 backdrop-blur-md z-50'>
-        <div className='max-w-[1300px] mx-auto  flex justify-between text-gray-200
-        text-xl items-center px-12 h-20'>
-
-            <a href="#"><img width={100} src={ownLogo} alt="" /></a>
-
-            <ul className='hidden md:flex gap-12 z-10 cursor-pointer'>
-                <li><Link to="skills" smooth={true} offset={50} duration={500}>About</Link></li>
-                <li><Link to="portfolio" smooth={true} offset={50} duration={500}>Portfolio</Link></li>
-                <li><Link to="contact" smooth={true} offset={50} duration={500}>Contact</Link></li>
-            </ul>
-
-            <div onClick={toggleNav} className='md:hidden z-50 text-gray-200'>
-                {nav ? <AiOutlineClose size={30} /> : <AiOutlineMenu size={30} />}
-            </div>
-
-            <motion.div
-            initial={false}
-            animate={nav ? 'open' : 'closed'}
-            variants={menuVariants}
-            className='fixed left-0 top-0 w-full min-h-screen bg-gray-900 z-40'
-            >
-                <ul className='font-semibold text-4xl space-y-8 mt-24 text-center'>
-                    <li><Link to="skills" onClick={closeNav} smooth={true} offset={50} duration={500}>About</Link></li>
-                    <li><Link to="portfolio" onClick={closeNav} smooth={true} offset={50} duration={500}>Portfolio</Link></li>
-                    <li><Link to="contact" onClick={closeNav} smooth={true} offset={50} duration={500}>Contact</Link></li>
-                </ul>
-
-
-            </motion.div>
-
-
-
+    <header className="sticky top-0 z-50 border-b border-[#29342d] bg-[#0b1110]/95 backdrop-blur-xl">
+      <nav className="container-page flex h-[76px] items-center justify-between" aria-label="Main navigation">
+        <a href="#home" className="font-display text-xl font-bold tracking-tight text-white" onClick={() => setOpen(false)}>
+          Zaw<span className="text-[#c9f17c]">.</span>
+        </a>
+        <div className="hidden items-center gap-9 md:flex">
+          {links.map(({ label, href }) => (
+            <a key={href} href={href} className="text-sm font-medium text-[#b7c1b9] transition hover:text-[#c9f17c]">{label}</a>
+          ))}
         </div>
-    </div>
+        <a href="mailto:zawheinhtet1223@gmail.com" className="button-outline hidden md:inline-flex">Let’s talk <span aria-hidden="true">↗</span></a>
+        <button type="button" className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#39443b] text-white md:hidden" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-menu" onClick={() => setOpen(!open)}>
+          {open ? <AiOutlineClose size={22} /> : <AiOutlineMenu size={22} />}
+        </button>
+      </nav>
+      {open && (
+        <div id="mobile-menu" className="border-t border-[#29342d] bg-[#0b1110] px-5 pb-7 pt-4 md:hidden">
+          {links.map(({ label, href }) => <a key={href} href={href} onClick={() => setOpen(false)} className="block border-b border-[#29342d] py-4 text-lg font-medium text-white">{label}</a>)}
+          <a href="mailto:zawheinhtet1223@gmail.com" onClick={() => setOpen(false)} className="button-primary mt-6">Let’s talk ↗</a>
+        </div>
+      )}
+    </header>
   )
 }
-
-export default Navbar

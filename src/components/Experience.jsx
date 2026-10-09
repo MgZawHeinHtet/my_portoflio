@@ -1,71 +1,45 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { FaGraduationCap } from "react-icons/fa";
-import { IoCodeWorkingOutline } from "react-icons/io5";
-
-
+import { FaGraduationCap } from 'react-icons/fa'
+import { IoCodeWorkingOutline } from 'react-icons/io5'
 import Reveal from './Reveal'
 
 const experiences = [
   {
-    company: 'Under Gradulated',
-    period: '2020 - Present',
-    description: `University of Computer Studies, (Maubin) I'm going to graduate after 5 years of studying. Currently, I'm a 4th year computer science student.`,
-    icon: <FaGraduationCap className='z-50 text-white text-3xl' />
+    title: 'Computer Science Student',
+    organization: 'University of Computer Studies (Maubin)',
+    period: '2020 – Present',
+    description: 'Studying computer science and building a foundation in software development.',
+    icon: FaGraduationCap,
   },
   {
-    company: 'Joined Team via Facebook group',
-    period: '2024 Aprl - 2024 May',
-    description: 'We\'ve build UI for E-learning Platform using Tailwind and React.',
-    icon: <IoCodeWorkingOutline className='z-50 text-white text-3xl' />,
-    link : <a target='_blank' className='underline text-gray-400' href="https://github.com/MgZawHeinHtet/e-learning-project">Here,Project Link</a>
+    title: 'E-learning Platform Team Project',
+    organization: 'Collaborative project',
+    period: 'April – May 2024',
+    description: 'Collaborated on the interface for an e-learning platform using React and Tailwind CSS.',
+    icon: IoCodeWorkingOutline,
+    link: 'https://github.com/MgZawHeinHtet/e-learning-project',
   },
-
 ]
 
-
-
-const Experience = () => {
+export default function Experience() {
   return (
-    <div className='p-8 max-w-[800px] mx-auto'>
-      <h1 className='text-4xl text-gray-200 font-bold text-center mb-12'>Experience</h1>
-      <motion.div
-        className='grid grid-cols-1 '
-        initial="hidden"
-        animate="visible"
-      >
-        {experiences.map((experience, index) => (
-          <Reveal key={index}>
-            <div className='grid md:grid-cols-3 grid-cols-1 '>
-              <div className='hidden before:content-[""] before:z-0 before:absolute before:h-full before:w-1 before:opacity-50 before:bg-purple-100 relative col-span-1 md:flex items-center justify-center'>
-                <div className='w-20 h-20   bg-white bg-opacity-10 rounded-full border-white border-4 flex items-center justify-center'>
-                  {experience.icon}
-                </div>
+    <section className="container-page section-pad" id="experience">
+      <Reveal>
+        <div className="mb-12"><p className="eyebrow">03 / My journey</p><h2 className="section-title">Experience<span className="text-[#c9f17c]">.</span></h2></div>
+        <div className="relative space-y-5 before:absolute before:bottom-8 before:left-6 before:top-8 before:w-px before:bg-[#405344] sm:before:left-8">
+          {experiences.map(({ title, organization, period, description, icon: Icon, link }) => (
+            <div key={title} className="relative flex gap-5 sm:gap-8">
+              <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#5a7851] bg-[#1e3122] text-[#c9f17c] sm:h-16 sm:w-16"><Icon size={23} aria-hidden="true" /></div>
+              <div className="surface flex-1 p-6 sm:p-8">
+                <p className="eyebrow">{period}</p>
+                <h3 className="mt-3 text-xl font-semibold text-white sm:text-2xl">{title}</h3>
+                <p className="mt-1 text-sm text-[#c9f17c]">{organization}</p>
+                <p className="muted mt-4 leading-relaxed">{description}</p>
+                {link && <a href={link} target="_blank" rel="noopener noreferrer" className="mt-5 inline-block text-sm font-semibold text-[#c9f17c] hover:underline">View project ↗</a>}
               </div>
-              <motion.div
-                key={index}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 1 }}
-                className='col-span-2 mb-10 w-full border border-purple-600 p-6 rounded-lg shadow-md
-                    hover:shadow-xl transition-shadow duration-300 bg-purple-700/10'
-              >
-                <h2 className='text-gray-100 text-2xl font-semibold'>{experience.company}</h2>
-                <p className='text-gray-300'>{experience.period}</p>
-                <p className='text-gray-400 my-4'>{experience.description}</p>
-                {experience.link && experience.link}
-
-              </motion.div>
             </div>
-          </Reveal>
-        ))}
-
-      </motion.div>
-
-
-    </div>
+          ))}
+        </div>
+      </Reveal>
+    </section>
   )
 }
-
-export default Experience

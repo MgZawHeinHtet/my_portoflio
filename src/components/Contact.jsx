@@ -1,91 +1,31 @@
-import React from "react"
-import { AiFillLinkedin, AiFillGithub } from "react-icons/ai"
-import { motion } from "framer-motion"
-import Reveal from "./Reveal"
+import Reveal from './Reveal'
 
-const Contact = () => {
+const fieldClass = 'mt-2 w-full rounded-xl border border-[#405044] bg-[#101815] px-4 py-3 text-[#f3f5f0] placeholder-[#819086] outline-none transition focus:border-[#c9f17c]'
+
+export default function Contact() {
   return (
-    <div className="px-6 max-w-[1000px] mx-auto md:my-12" id="contact">
+    <section className="border-t border-[#29342d] bg-[#101815]" id="contact">
+      <div className="container-page section-pad">
         <Reveal>
-        <div className="grid md:grid-cols-2 place-items-center">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
             <div>
-                <div className="text-gray-300 my-3">
-                    <h3 className="text-4xl font-semibold mb-5">About <span>Me</span></h3>
-                    <p className="text-justify leading-7 w-11/12 mx-auto">
-                    I am a positive, enthusiastic and competent Web Developer who, over the years, has built up a diverse range of skills, qualities and attributes that guarantee I will perform highly in Web Development. I have extensive experience working both alone and as part of a team on often time-sensitive, challenging web development projects that require outstanding creative and technical capabilities and the ability to ensure all work is optimized across a wide range of platforms.                    </p>
-                </div>
-
-                <div className="flex mt-10 items-center gap-7">
-                    <div className="bg-gray-800/40 p-4 rounded-lg">
-                        <h3 className="md:text-4xl text-2xl font-semibold text-white">11
-                            <span>+</span>
-                        </h3>
-                        <p className="text-xs md:text-base"><span>Projects</span></p>
-                    </div>
-
-                    <div className="bg-gray-800/40 p-5 rounded-lg">
-                        <h3 className="md:text-4xl text-2xl font-semibold text-white">2
-                            <span>+</span>
-                        </h3>
-                        <p className="text-xs md:text-base"><span>years of experience</span></p>
-                    </div>
-
-                    <div className="bg-gray-800/40 p-5 rounded-lg">
-                        <h3 className="md:text-4xl text-2xl font-semibold text-white">4
-                            <span>+</span>
-                        </h3>
-                        <p className="text-xs md:text-base"><span>Certificates</span></p>
-                    </div>
-
-                </div>
-
+              <p className="eyebrow">04 / Get in touch</p>
+              <h2 className="section-title">Let’s make something great<span className="text-[#c9f17c]">.</span></h2>
+              <p className="muted mt-6 max-w-md leading-relaxed">Have a project in mind or just want to connect? Send me a message and let’s talk about it.</p>
+              <a className="mt-9 inline-block break-all text-lg font-semibold text-[#c9f17c] underline decoration-[#c9f17c]/40 underline-offset-8 hover:decoration-[#c9f17c]" href="mailto:zawheinhtet1223@gmail.com">zawheinhtet1223@gmail.com ↗</a>
             </div>
-
-            <form
-                action="https://formsubmit.co/zawheinhtet1223@gmail.com"
-                method="POST"
-                className=" max-w-6xl p-5 md:p-12"
-                id="form"
-            >
-            <p className="text-gray-100 font-bold text-xl mb-2">
-              Let´s connect!
-            </p>
-            <input
-                type="text"
-                id="name"
-                placeholder="Your Name ..."
-                name="name"
-                className="mb-2 w-full rounded-md border border-purple-600 py-2 pl-2 pr-4"
-            />
-            <input
-              type="email"
-              id="email"
-              placeholder="Your Email ..."
-              name="email"
-              className="mb-2 w-full rounded-md border border-purple-600 py-2 pl-2 pr-4"
-            />
-            <textarea
-              name="textarea"
-              id="textarea"
-              cols="30"
-              rows="4"
-              placeholder="Your Message ..."
-              className="mb-2 w-full rounded-md border border-purple-600 py-2 pl-2 pr-4"
-            />
-            <button
-              type="submit"
-              className="w-full py-3 rounded-md text-gray-100 font-semibold text-xl bg-primary-color"
-            >
-              Send Message
-            </button>
-            
-          </form>
-
-        </div>
-        
+            <form action="https://formsubmit.co/zawheinhtet1223@gmail.com" method="POST" className="surface p-6 sm:p-9">
+              <h3 className="mb-7 text-2xl font-semibold text-white">Send a message</h3>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <label className="text-sm font-medium text-[#e3ebe2]">Your name<input type="text" name="name" autoComplete="name" required placeholder="Your name" className={fieldClass} /></label>
+                <label className="text-sm font-medium text-[#e3ebe2]">Email address<input type="email" name="email" autoComplete="email" required placeholder="you@example.com" className={fieldClass} /></label>
+              </div>
+              <label className="mt-5 block text-sm font-medium text-[#e3ebe2]">Your message<textarea name="message" rows="5" required placeholder="Tell me about your idea..." className={fieldClass} /></label>
+              <button type="submit" className="button-primary mt-6 w-full sm:w-auto">Send message <span aria-hidden="true">↗</span></button>
+            </form>
+          </div>
         </Reveal>
-    </div>
+      </div>
+    </section>
   )
 }
-
-export default Contact
