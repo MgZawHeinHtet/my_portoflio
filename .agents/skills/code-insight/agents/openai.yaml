@@ -1,0 +1,4 @@
+interface:
+  display_name: "Code Insight"
+  short_description: "Understand scoped code flows in a top-down HTML view"
+  default_prompt: "Use $code-insight to explain the selected existing code flow from the top down and immediately open its HTML view."

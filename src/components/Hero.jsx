@@ -1,137 +1,32 @@
-import React from "react";
-import zawProfile from "../assets/zawProfile.png";
-import { TypeAnimation } from "react-type-animation";
-import ShinyEffect from "./ShinyEffect";
-import myCv from "../assets/myCv.pdf"
-import {
-    AiOutlineGithub,
-    AiOutlineInstagram,
-    AiOutlineLink,
-    AiOutlineLinkedin,
+import { AiOutlineArrowDown, AiOutlineGithub, AiOutlineLinkedin } from 'react-icons/ai'
+import zawProfile from '../assets/zawProfile.png'
+import myCv from '../assets/myCv.pdf'
 
-} from "react-icons/ai";
-import {
-    DiCss3,
-    DiHtml5,
-    DiJavascript1,
-    DiLaravel,
-    DiNodejsSmall,
-    DiPhp,
-    DiReact,
-} from "react-icons/di";
-import { motion } from "framer-motion";
-
-
-const Hero = () => {
-    return (
-        <div className="mt-24 max-w-[1200px] mx-auto relative">
-            <div className="grid md:grid-cols-2 place-items-center gap-8">
-                <motion.div
-                    initial={{ opacity: 0, y: -50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                >
-                    <TypeAnimation
-                        sequence={[
-                            "Fullstack Dev",
-                            1000,
-                            "Application Dev",
-                            1000,
-                            "Software Dev",
-                            1000
-                        ]}
-                        speed={50}
-                        repeat={Infinity}
-                        className="font-bold text-gray-400 text-xl md:text-5xl italic- mb-4"
-                    />
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="text-gray-200 md:text-7xl text-5xl tracking-tight mb-4"
-                    >
-                        HEY, I AM <br />
-                        <span className="text-purple-500">Zaw Hein Htet</span>
-                    </motion.p>
-
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 1 }}
-                        className="text-gray-300 max-w-[300px] md:max-w-[500px] md:text-2xl text-lg mb-6"
-                    >
-                        I am a passionate fullstack developer with over 2 years of experience.
-                    </motion.p>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 1.5 }}
-                        className="flex flex-row items-center gap-6 my-4 md:mb-0"
-                    >
-                        <motion.button whileHover={{ scale: 1.05, boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.3)" }}
-                            className="z-10 cursor-pointer font-bold text-gray-200 md:w-auto p-4 border
-                                border-purple-400 rounded-xl"
-                        >
-                            <a href={myCv} download={myCv}>
-                                Download CV
-                            </a>
-                        </motion.button>
-
-
-                        <div className="flex gap-6 flex-row text-4xl md:text-6xl text-purple-400 z-20">
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://github.com/MgZawHeinHtet">
-                                <AiOutlineGithub />
-                            </motion.a>
-
-                            <motion.a whileHover={{ scale: 1.2 }} href="https://www.linkedin.com/in/zaw-hein-htet/">
-                                <AiOutlineLinkedin />
-                            </motion.a>
-
-
-                        </div>
-                    </motion.div>
-                </motion.div>
-
-
-                <motion.img
-                    src={zawProfile}
-                    className="w-[300px] md:w-[450px]"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1 }}
-                />
-            </div>
-
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 2 }}
-                className="flex flex-row text-7xl px-12 md:px-0 w-full justify-center items-center py-24"
-            >
-                <p className="text-gray-200 mr-6">My Tech Stack</p>
-                <DiHtml5 className="text-orange-600 mx-2" />
-                <DiCss3 className="text-blue-600 mx-2" />
-                <DiJavascript1 className="text-yellow-500 mx-2" />
-                <DiReact className="text-blue-500 mx-2" />
-                <DiPhp className="text-blue-500 mx-2" />
-                <DiLaravel className="text-red-500 mx-2" />
-
-            </motion.div>
-
-            <div className="absolute inset-0 hidden md:block">
-                <ShinyEffect left={0} top={0} size={1400} />
-            </div>
-
+export default function Hero() {
+  return (
+    <section id="home" className="relative overflow-hidden border-b border-[#29342d]">
+      <div className="pointer-events-none absolute right-[-15%] top-[-30%] h-[700px] w-[700px] rounded-full bg-[#a2d76f]/[0.07] blur-[110px]" />
+      <div className="container-page relative grid min-h-[680px] items-center gap-12 pb-12 pt-16 md:grid-cols-[1.15fr_0.85fr] md:pb-0 md:pt-10">
+        <div className="relative z-10">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#45583c] bg-[#c9f17c]/[0.07] px-4 py-2 text-xs font-semibold text-[#c9f17c] sm:text-sm"><span className="h-2 w-2 rounded-full bg-[#c9f17c]" /> Fullstack Developer</div>
+          <h1 className="font-display max-w-[730px] text-[clamp(3.5rem,7vw,6.5rem)] font-semibold leading-[0.99] tracking-[-0.075em] text-[#f3f5f0]">Hi, I’m Zaw Hein Htet<span className="text-[#c9f17c]">.</span></h1>
+          <p className="muted mt-8 max-w-[530px] text-lg leading-relaxed sm:text-xl">I build thoughtful web experiences, from intuitive interfaces to reliable fullstack applications.</p>
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <a href="#portfolio" className="button-primary">Explore my work <span aria-hidden="true">↗</span></a>
+            <a href={myCv} download="Zaw-Hein-Htet-CV.pdf" className="button-outline">Download CV <AiOutlineArrowDown aria-hidden="true" /></a>
+          </div>
+          <div className="mt-12 flex items-center gap-5 border-t border-[#29342d] pt-6">
+            <span className="text-xs font-bold uppercase tracking-[0.18em] text-[#8f9c92]">Find me on</span>
+            <a href="https://github.com/MgZawHeinHtet" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-2xl text-[#e7ede6] transition hover:text-[#c9f17c]"><AiOutlineGithub /></a>
+            <a href="https://www.linkedin.com/in/zaw-hein-htet/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-2xl text-[#e7ede6] transition hover:text-[#c9f17c]"><AiOutlineLinkedin /></a>
+          </div>
         </div>
-    )
+        <div className="relative mx-auto flex w-full max-w-[470px] items-end justify-center self-end">
+          <div className="absolute bottom-[8%] left-[8%] right-[8%] aspect-square rounded-full border border-[#c9f17c]/25 bg-[#213429]" />
+          <div className="absolute bottom-[15%] left-[15%] right-[15%] aspect-square rounded-full border border-[#c9f17c]/20" />
+          <img src={zawProfile} alt="Portrait of Zaw Hein Htet" className="relative z-10 w-full object-contain" />
+        </div>
+      </div>
+    </section>
+  )
 }
-
-export default Hero

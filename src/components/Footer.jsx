@@ -1,18 +1,16 @@
-import React from 'react'
-import { FaGithubSquare, FaInstagram } from 'react-icons/fa'
+import { AiOutlineGithub, AiOutlineLinkedin } from 'react-icons/ai'
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <div className='max-w-[1300px] mx-auto flex justify-between p-6 md:p-20 text-sm md:text-lg mt-12'>
-      <div className='space-y-4'>
-        <h3 className='text-2xl text-gray-200 font-semibold'>Zaw Hein Htet</h3>
-        <div className='flex flex-row gap-6 text-gray-400 text-4xl'>
-          <a href="https://github.com/MgZawHeinHtet"><FaGithubSquare /></a>
-          <a href="https://www.linkedin.com/in/zaw-hein-htet/"><FaInstagram /></a>
+    <footer className="border-t border-[#29342d]">
+      <div className="container-page flex flex-col gap-6 py-8 sm:flex-row sm:items-center sm:justify-between">
+        <div><a href="#home" className="font-display text-xl font-bold text-white">Zaw<span className="text-[#c9f17c]">.</span></a><p className="muted mt-1 text-sm">Designed & built by Zaw Hein Htet.</p></div>
+        <div className="flex items-center gap-5">
+          <a href="https://github.com/MgZawHeinHtet" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-2xl text-[#b7c1b9] hover:text-[#c9f17c]"><AiOutlineGithub /></a>
+          <a href="https://www.linkedin.com/in/zaw-hein-htet/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-2xl text-[#b7c1b9] hover:text-[#c9f17c]"><AiOutlineLinkedin /></a>
+          <a href="#home" className="ml-4 text-sm font-semibold text-[#c9f17c] hover:underline">Back to top ↑</a>
         </div>
       </div>
-    </div>
+    </footer>
   )
 }
-
-export default Footer

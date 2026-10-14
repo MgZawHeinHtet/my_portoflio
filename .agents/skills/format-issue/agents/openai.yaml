@@ -1,0 +1,4 @@
+interface:
+  display_name: "Format Issue"
+  short_description: "Format concise issue titles and descriptions"
+  default_prompt: "Use $format-issue to draft a concise issue title and description with Problem, Specification, and Acceptance sections."

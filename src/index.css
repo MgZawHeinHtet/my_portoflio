@@ -1,34 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans:ital@0;1&family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Space Grotesk", sans-serif;
-  background-color: #190b1f;
+:root { font-family: 'DM Sans', sans-serif; color: #eef2ec; background: #0b1110; font-synthesis: none; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; }
+* { box-sizing: border-box; }
+::selection { background: #c9f17c; color: #0b1110; }
+h1, h2, h3, .font-display { font-family: 'Space Grotesk', sans-serif; }
+a, button, input, textarea { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #c9f17c; outline-offset: 4px; }
+section[id] { scroll-margin-top: 96px; }
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8 lg:px-12; }
+  .section-pad { @apply py-20 md:py-28; }
+  .eyebrow { @apply text-xs font-bold uppercase tracking-[0.22em] text-[#c9f17c]; }
+  .section-title { @apply mt-4 text-4xl font-semibold leading-[1.1] tracking-[-0.04em] text-[#f3f5f0] sm:text-5xl; }
+  .muted { @apply text-[#a4afa8]; }
+  .button-primary { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#c9f17c] px-6 py-3 text-sm font-bold text-[#101810] transition hover:bg-[#e0ffa5]; }
+  .button-outline { @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#48564b] px-6 py-3 text-sm font-bold text-[#f3f5f0] transition hover:border-[#c9f17c] hover:text-[#c9f17c]; }
+  .surface { @apply rounded-3xl border border-[#29342d] bg-[#141c18]; }
 }
 
-h2 {
-  @apply text-xl md:text-4xl
-}
-
-p {
-  @apply text-xl tracking-tight leading-relaxed
-}
-
-span {
-  @apply text-purple-600
-}
-
-
-.shiny-effect {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-  background: radial-gradient(circle, rgba(178, 19, 202, 0.2), transparent 70%);
-}
-
-.bg-primary-color {
-    @apply bg-purple-600
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }

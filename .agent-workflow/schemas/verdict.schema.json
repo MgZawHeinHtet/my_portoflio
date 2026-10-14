@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["verdict", "findings", "test_audit"],
+  "properties": {
+    "verdict": { "enum": ["approved", "changes_required"] },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["severity", "file", "line", "summary", "failure_scenario"],
+        "properties": {
+          "severity": { "enum": ["blocking", "minor"] },
+          "file": { "type": "string" },
+          "line": { "type": ["integer", "null"], "minimum": 1 },
+          "summary": { "type": "string", "minLength": 1 },
+          "failure_scenario": { "type": "string", "minLength": 1 },
+          "requirement": { "type": ["string", "null"], "minLength": 1 },
+          "required_outcome": { "type": ["string", "null"], "minLength": 1 },
+          "verification": { "type": ["string", "null"], "minLength": 1 },
+          "suggested_approach": { "type": ["string", "null"], "minLength": 1 }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": { "severity": { "const": "blocking" } },
+              "required": ["severity"]
+            },
+            "then": {
+              "required": ["requirement", "required_outcome", "verification", "suggested_approach"],
+              "properties": {
+                "requirement": { "type": "string", "minLength": 1 },
+                "required_outcome": { "type": "string", "minLength": 1 },
+                "verification": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "test_audit": { "type": "string", "minLength": 1 }
+  }
+}
