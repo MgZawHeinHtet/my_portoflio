@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["ts", "event", "iteration"],
+  "properties": {
+    "ts": { "type": "string", "minLength": 1 },
+    "event": {
+      "enum": ["session_start", "plan_proposal", "plan_revision", "plan_confirmation", "plan", "coder_dispatch", "coder_result", "gates", "reviewer_dispatch", "reviewer_verdict", "decision", "minor_fix_dispatch", "minor_fixes", "minor_review_dispatch", "minor_review_verdict", "session_end"]
+    },
+    "iteration": { "type": ["integer", "null"], "minimum": 1 },
+    "workspace_fingerprint": { "type": "string", "minLength": 1 },
+    "confirmed": { "type": "boolean" },
+    "action": { "type": "string", "minLength": 1 }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "event": { "const": "plan_confirmation" } }, "required": ["event"] },
+      "then": { "required": ["confirmed"], "properties": { "confirmed": { "const": true } } }
+    },
+    {
+      "if": { "properties": { "event": { "const": "decision" } }, "required": ["event"] },
+      "then": { "required": ["action"] }
+    },
+    {
+      "if": { "properties": { "event": { "const": "reviewer_verdict" } }, "required": ["event"] },
+      "then": { "required": ["workspace_fingerprint"] }
+    },
+    {
+      "if": { "properties": { "event": { "const": "minor_review_verdict" } }, "required": ["event"] },
+      "then": { "required": ["workspace_fingerprint"] }
+    }
+  ]
+}
